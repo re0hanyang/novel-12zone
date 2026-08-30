@@ -3,30 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>十二區域 | 12ZONE</title>
+    <title>12지구역 | TWELVE ZONE</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <main class="main-screen">
+    <!-- 메인 화면 -->
+    <main id="main-screen" class="screen active">
 
-        <div class="overlay"></div>
+        <div class="background-symbol">十二</div>
 
-        <section class="title-area">
+        <div class="main-content">
+
             <p class="subtitle">THE TWELVE ZONES</p>
 
-            <h1>十二區域</h1>
+            <h1>12지구역</h1>
 
             <p class="description">
-                태어난 해에 따라 나뉘어진 열두 개의 세계.<br>
-                당신은 어느 구역에서 살아가고 있는가.
+                열두 개의 구역으로 나뉜 도시.<br>
+                그리고 그곳에 숨겨진 열두 개의 운명.
             </p>
 
-            <button id="enterButton">
-                세계에 입장하기
+            <button id="enter-button">
+                <span>입 장</span>
+                <small>ENTER THE ZONE</small>
             </button>
-        </section>
+
+        </div>
+
+        <div class="copyright">
+            TWELVE ZONE © 2026
+        </div>
+
+    </main>
+
+
+    <!-- 메뉴 화면 -->
+    <main id="menu-screen" class="screen">
+
+        <div class="menu-container">
+
+            <p class="menu-subtitle">WELCOME TO</p>
+
+            <h2>12지구역</h2>
+
+            <p class="menu-description">
+                이곳에서 열두 구역의 기록을 확인할 수 있습니다.
+            </p>
+
+            <div class="menu-grid">
+
+                <button class="menu-card">
+                    <span class="menu-number">01</span>
+                    <strong>세계관</strong>
+                    <small>WORLD</small>
+                </button>
+
+                <button class="menu-card">
+                    <span class="menu-number">02</span>
+                    <strong>등장인물</strong>
+                    <small>CHARACTERS</small>
+                </button>
+
+                <button class="menu-card">
+                    <span class="menu-number">03</span>
+                    <strong>12지구역 지도</strong>
+                    <small>MAP</small>
+                </button>
+
+                <button class="menu-card">
+                    <span class="menu-number">04</span>
+                    <strong>기록</strong>
+                    <small>ARCHIVE</small>
+                </button>
+
+            </div>
+
+            <button id="back-button">
+                ← MAIN
+            </button>
+
+        </div>
 
     </main>
 
