@@ -126,56 +126,219 @@ h1 {
 }
 
 
-/* 입장 버튼 */
+/* ========================================
+   입장 버튼 - TWELVE ZONE
+======================================== */
 
 #enter-button {
-    margin-top: 55px;
+    position: relative;
 
-    width: 190px;
-    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    border: 1px solid rgba(255,255,255,0.35);
+    margin: 55px auto 0;
 
-    background: rgba(255,255,255,0.025);
+    width: 230px;
+    height: 78px;
+
+    border: 1px solid rgba(255, 255, 255, 0.38);
+
+    background: rgba(255, 255, 255, 0.025);
 
     color: #fff;
 
+    text-decoration: none;
+
     cursor: pointer;
 
+    overflow: hidden;
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
     transition:
-        background 0.3s ease,
-        border-color 0.3s ease,
+        width 0.45s ease,
+        background 0.45s ease,
+        border-color 0.45s ease,
+        box-shadow 0.45s ease,
         transform 0.3s ease;
 }
 
+
+/* 버튼 내부 빛 */
+#enter-button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -130%;
+
+    width: 80%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.14),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.8s ease;
+
+    pointer-events: none;
+}
+
+
+/* 하단 포인트 라인 */
+#enter-button::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 0;
+    height: 1px;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    transform: translateX(-50%);
+
+    transition: width 0.5s ease;
+
+    pointer-events: none;
+}
+
+
+/* 한글 */
 #enter-button span {
+    position: relative;
+    z-index: 2;
+
     display: block;
 
-    font-size: 17px;
+    font-size: 18px;
+    font-weight: 400;
 
     letter-spacing: 0.45em;
 
     margin-left: 0.45em;
+
+    transition:
+        letter-spacing 0.45s ease,
+        transform 0.45s ease;
 }
 
+
+/* 영문 */
 #enter-button small {
+    position: relative;
+    z-index: 2;
+
     display: block;
 
-    margin-top: 7px;
+    margin-top: 8px;
 
     font-size: 8px;
 
-    letter-spacing: 0.25em;
+    letter-spacing: 0.28em;
 
-    color: #777b88;
+    color: #858894;
+
+    opacity: 0.75;
+
+    transition:
+        opacity 0.45s ease,
+        letter-spacing 0.45s ease;
 }
 
-#enter-button:hover {
-    background: rgba(255,255,255,0.1);
 
-    border-color: rgba(255,255,255,0.8);
+/* 마우스 오버 */
+#enter-button:hover {
+    width: 250px;
+
+    background: rgba(255, 255, 255, 0.055);
+
+    border-color: rgba(255, 255, 255, 0.85);
+
+    box-shadow:
+        0 0 25px rgba(255, 255, 255, 0.07),
+        inset 0 0 25px rgba(255, 255, 255, 0.025);
 
     transform: translateY(-3px);
+}
+
+
+/* 빛이 버튼을 가로질러 이동 */
+#enter-button:hover::before {
+    left: 140%;
+}
+
+
+/* 하단 라인 확장 */
+#enter-button:hover::after {
+    width: 100%;
+}
+
+
+/* 한글 확장 */
+#enter-button:hover span {
+    letter-spacing: 0.65em;
+
+    transform: translateY(-1px);
+}
+
+
+/* 영문 밝아짐 */
+#enter-button:hover small {
+    opacity: 1;
+
+    letter-spacing: 0.38em;
+}
+
+
+/* 클릭 */
+#enter-button:active {
+    transform: translateY(-1px) scale(0.97);
+}
+
+
+/* 키보드 접근성 */
+#enter-button:focus-visible {
+    outline: none;
+
+    border-color: rgba(255, 255, 255, 0.9);
+
+    box-shadow:
+        0 0 0 2px rgba(255, 255, 255, 0.08),
+        0 0 25px rgba(255, 255, 255, 0.08);
+}
+
+
+/* 모바일 */
+@media (max-width: 600px) {
+
+    #enter-button {
+        width: 205px;
+        height: 72px;
+
+        margin-top: 40px;
+    }
+
+    #enter-button:hover {
+        width: 220px;
+    }
+
+    #enter-button span {
+        font-size: 17px;
+    }
+
 }
 
 
