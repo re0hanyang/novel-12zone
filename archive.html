@@ -295,9 +295,9 @@
         .timeline {
             display: grid;
 
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
 
-            gap: 12px;
+            gap: 18px;
 
             margin-bottom: 50px;
         }
@@ -528,6 +528,80 @@
             background: rgba(255,255,255,0.06);
         }
 
+
+        /* =========================================================
+           CHARACTER FILTER SECTIONS
+        ========================================================= */
+
+        .character-filter-section {
+            margin-bottom: 22px;
+        }
+
+        .character-filter-label {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .character-filter-label strong {
+            color: #ddd;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        .character-filter-label span {
+            color: #444;
+            font-size: 8px;
+            letter-spacing: 2px;
+        }
+
+        .character-filter.zodiac-filter {
+            margin-bottom: 30px;
+            padding-bottom: 24px;
+        }
+
+        .zodiac-button {
+            min-width: 78px;
+            padding: 10px 12px;
+            border: 1px solid #303035;
+            background: transparent;
+            color: #666;
+            cursor: pointer;
+            transition: color .2s ease, border-color .2s ease, background .2s ease, transform .2s ease;
+        }
+
+        .zodiac-button:hover {
+            color: #ddd;
+            border-color: #555;
+            transform: translateY(-1px);
+        }
+
+        .zodiac-button.active {
+            color: #fff;
+            border-color: #888;
+            background: rgba(255,255,255,.07);
+        }
+
+        .zodiac-symbol {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .zodiac-name {
+            display: block;
+            font-size: 9px;
+            letter-spacing: 1px;
+        }
+
+        .character-card[data-zodiac-hidden="true"] {
+            display: none;
+        }
+
+        .character-group[data-zodiac-empty="true"] {
+            display: none;
+        }
 
         /* =========================================================
            FACTION TITLE
@@ -874,11 +948,19 @@
         }
 
 
+
+
         /* =========================================================
            MOBILE
         ========================================================= */
 
         @media (max-width: 900px) {
+
+            .zodiac-buttons {
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
+                gap: 7px;
+            }
 
             .ability-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -897,12 +979,16 @@
             }
 
             .timeline {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
 
         @media (max-width: 700px) {
+
+            .zodiac-buttons {
+                grid-template-columns: repeat(4, 1fr);
+            }
 
             .archive-page {
                 padding: 40px 15px 60px;
@@ -976,6 +1062,10 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+
             .map-wrapper {
                 padding: 7px;
             }
@@ -987,6 +1077,10 @@
 
 
         @media (max-width: 480px) {
+
+            .zodiac-buttons {
+                grid-template-columns: repeat(3, 1fr);
+            }
 
             .character-card {
                 grid-template-columns: 1fr;
@@ -1002,6 +1096,96 @@
 
             .zone-grid {
                 grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* =========================================================
+           CHARACTER IMAGE LIGHTBOX
+        ========================================================= */
+
+        .character-card {
+            cursor: pointer;
+        }
+
+        .character-card:focus-visible {
+            outline: 2px solid #aaa;
+            outline-offset: 3px;
+        }
+
+        .character-lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .character-lightbox.active {
+            display: flex;
+            animation: lightboxFadeIn 0.2s ease;
+        }
+
+        @keyframes lightboxFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .character-lightbox-image {
+            display: block;
+            max-width: min(92vw, 900px);
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border: 1px solid #333;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.65);
+        }
+
+        .character-lightbox-close {
+            position: fixed;
+            top: 22px;
+            right: 25px;
+            width: 44px;
+            height: 44px;
+            border: 1px solid #444;
+            background: rgba(0,0,0,0.55);
+            color: #aaa;
+            font-size: 25px;
+            line-height: 1;
+            cursor: pointer;
+            transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .character-lightbox-close:hover {
+            color: #fff;
+            border-color: #777;
+            background: rgba(255,255,255,0.08);
+        }
+
+        body.lightbox-open {
+            overflow: hidden;
+        }
+
+        @media (max-width: 700px) {
+            .character-lightbox {
+                padding: 15px;
+            }
+
+            .character-lightbox-image {
+                max-width: 96vw;
+                max-height: 88vh;
+            }
+
+            .character-lightbox-close {
+                top: 12px;
+                right: 12px;
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
@@ -1067,7 +1251,7 @@
             type="button"
         >
             <span class="tab-number">03</span>
-            <span class="tab-title">12구역 지도</span>
+            <span class="tab-title">십이지구역 지도</span>
             <span class="tab-en">ZODIAC MAP</span>
         </button>
 
@@ -1144,51 +1328,49 @@
 
                     <div class="timeline-card">
                         <span class="timeline-year">2016</span>
-
-                        <span class="timeline-title">
-                            지신 발현
-                        </span>
-
-                        <span class="timeline-text">
-                            전 세계 인간에게 12지신의 흔적과
-                            특성이 나타나기 시작한다.
-                        </span>
+                        <span class="timeline-title">대발현</span>
+                        <span class="timeline-text">전 세계적으로 지신 발현이 시작되고 사회 전체에 혼란이 발생한다.</span>
                     </div>
 
+                    <div class="timeline-card">
+                        <span class="timeline-year">2017</span>
+                        <span class="timeline-title">지신관리법 제정</span>
+                        <span class="timeline-text">지신의 등록과 능력 관리, 위험도 분류를 위한 국가 차원의 법적 기준이 마련된다.</span>
+                    </div>
 
                     <div class="timeline-card">
                         <span class="timeline-year">2018</span>
-
-                        <span class="timeline-title">
-                            지신관리청 설립
-                        </span>
-
-                        <span class="timeline-text">
-                            대한민국 정부가 지신 관련
-                            등록·관리·연구·치안을 담당하는
-                            국가기관을 설립한다.
-                        </span>
+                        <span class="timeline-title">지신관리청 설립</span>
+                        <span class="timeline-text">대한민국 정부가 지신 관련 등록·관리·연구와 치안을 담당하는 국가기관을 설립한다.</span>
                     </div>
 
+                    <div class="timeline-card">
+                        <span class="timeline-year">2019</span>
+                        <span class="timeline-title">서울 12구역 개편</span>
+                        <span class="timeline-text">서울이 12개의 특별관리구역으로 재편되고 지신별 사회권역이 형성되기 시작한다.</span>
+                    </div>
+
+                    <div class="timeline-card">
+                        <span class="timeline-year">2020~2023</span>
+                        <span class="timeline-title">사회 안정화</span>
+                        <span class="timeline-text">지신이 일상사회에 정착하고 학교·직장·의료 등 사회 전반에 지신 문화가 자리 잡는다.</span>
+                    </div>
+
+                    <div class="timeline-card">
+                        <span class="timeline-year">2024~2025</span>
+                        <span class="timeline-title">불법 능력거래 확장</span>
+                        <span class="timeline-text">불법 능력거래와 암흑사회가 성장하며 정부·기업·범죄조직의 충돌이 심화된다.</span>
+                    </div>
 
                     <div class="timeline-card">
                         <span class="timeline-year">2026</span>
-
-                        <span class="timeline-title">
-                            현재
-                        </span>
-
-                        <span class="timeline-text">
-                            서울은 12개의 특별관리구역으로
-                            나뉘어 있으며 각 세력의 이해관계가
-                            복잡하게 충돌하고 있다.
-                        </span>
+                        <span class="timeline-title">현재</span>
+                        <span class="timeline-text">정부 통제, 기업 권력, 범죄조직, 독립 세력이 안정된 표면 아래에서 동시에 움직인다.</span>
                     </div>
 
                 </div>
 
             </div>
-
 
             <!-- ZODIAC -->
 
@@ -1537,6 +1719,34 @@
             </div>
 
 
+            <!-- ZODIAC FILTER -->
+            <div class="character-filter-section">
+                <div class="character-filter-label">
+                    <strong>지신별</strong>
+                    <span>SELECT ONE ZODIAC</span>
+                </div>
+
+                <div class="character-filter zodiac-filter">
+                    <button class="zodiac-button active" type="button" data-zodiac-filter="all" aria-selected="true">
+                        <span class="zodiac-symbol">ALL</span><span class="zodiac-name">전체</span>
+                    </button>
+                    <button class="zodiac-button" type="button" data-zodiac-filter="자" aria-selected="false"><span class="zodiac-symbol">🐭 子</span><span class="zodiac-name">자 · 쥐</span></button>
+                    <button class="zodiac-button" type="button" data-zodiac-filter="축" aria-selected="false"><span class="zodiac-symbol">🐂 丑</span><span class="zodiac-name">축 · 소</span></button>
+                    <button class="zodiac-button" type="button" data-zodiac-filter="인" aria-selected="false"><span class="zodiac-symbol">🐅 寅</span><span class="zodiac-name">인 · 호랑이</span></button>
+                    <button class="zodiac-button" type="button" data-zodiac-filter="묘" aria-selected="false"><span class="zodiac-symbol">🐇 卯</span><span class="zodiac-name">묘 · 토끼</span></button>
+                    <button class="zodiac-button" type="button" data-zodiac-filter="진" aria-selected="false"><span class="zodiac-symbol">🐉 辰</span><span class="zodiac-name">진 · 용</span></button>
+                    <button class="zodiac-button" type="button" data-zodiac-filter="사" aria-selected="false"><span class="zodiac-symbol">🐍 巳</span><span class="zodiac-name">사 · 뱀</span></button>
+                    <button class="zodiac-button" type="button" data-zodiac-filter="오" aria-selected="false"><span class="zodiac-symbol">🐎 午</span><span class="zodiac-name">오 · 말</span></button>
+                    <button class="zodiac-button" type="button" data-zodiac-filter="미" aria-selected="false"><span class="zodiac-symbol">🐐 未</span><span class="zodiac-name">미 · 양</span></button>
+                    <button class="zodiac-button" type="button" data-zodiac-filter="신" aria-selected="false"><span class="zodiac-symbol">🐒 申</span><span class="zodiac-name">신 · 원숭이</span></button>
+                    <button class="zodiac-button" type="button" data-zodiac-filter="유" aria-selected="false"><span class="zodiac-symbol">🐓 酉</span><span class="zodiac-name">유 · 닭</span></button>
+                    <button class="zodiac-button" type="button" data-zodiac-filter="술" aria-selected="false"><span class="zodiac-symbol">🐕 戌</span><span class="zodiac-name">술 · 개</span></button>
+                    <button class="zodiac-button" type="button" data-zodiac-filter="해" aria-selected="false"><span class="zodiac-symbol">🐖 亥</span><span class="zodiac-name">해 · 돼지</span></button>
+                </div>
+            </div>
+
+
+
             <!-- =================================================
                  FACTION 01
             ================================================== -->
@@ -1563,18 +1773,15 @@
                     <!-- 01 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="자"
                         data-faction="agency"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 01
-                            </span>
+                            <img src="./images/han_sea.jpg" alt="한세아" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 01
                             </span>
@@ -1607,18 +1814,15 @@
                     <!-- 04 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="묘"
                         data-faction="agency"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 04
-                            </span>
+                            <img src="./images/yoon_harin.jpg" alt="윤하린" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 04
                             </span>
@@ -1651,18 +1855,15 @@
                     <!-- 13 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="진"
                         data-faction="agency"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 13
-                            </span>
+                            <img src="./images/jang_minseok.jpg" alt="장민석" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 13
                             </span>
@@ -1695,18 +1896,15 @@
                     <!-- 14 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="술"
                         data-faction="agency"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 14
-                            </span>
+                            <img src="./images/noh_yujin.jpg" alt="노유진" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 14
                             </span>
@@ -1739,18 +1937,15 @@
                     <!-- 15 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="신"
                         data-faction="agency"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 15
-                            </span>
+                            <img src="./images/lee_seongho.jpg" alt="이성호" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 15
                             </span>
@@ -1783,18 +1978,15 @@
                     <!-- 16 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="묘"
                         data-faction="agency"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 16
-                            </span>
+                            <img src="./images/baek_jian.jpg" alt="백지안" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 16
                             </span>
@@ -1827,18 +2019,15 @@
                     <!-- 28 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="자"
                         data-faction="agency"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 28
-                            </span>
+                            <img src="./images/park_siwoo.jpg" alt="박시우" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 28
                             </span>
@@ -1847,7 +2036,7 @@
                                 🐭 子 · 쥐
                             </span>
 
-                            <h4>류다현</h4>
+                            <h4>박시우</h4>
 
                             <p class="character-role">
                                 지신관리청 정보·행정 담당
@@ -1898,18 +2087,15 @@
                     <!-- 03 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="인"
                         data-faction="police"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 03
-                            </span>
+                            <img src="./images/seo_chaerin.jpg" alt="서채린" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 03
                             </span>
@@ -1942,18 +2128,15 @@
                     <!-- 11 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="술"
                         data-faction="police"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 11
-                            </span>
+                            <img src="./images/park_geonwoo.jpg" alt="박건우" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 11
                             </span>
@@ -1986,18 +2169,15 @@
                     <!-- 22 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="축"
                         data-faction="police"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 22
-                            </span>
+                            <img src="./images/jung_wooseok.jpg" alt="정우석" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 22
                             </span>
@@ -2030,18 +2210,15 @@
                     <!-- 25 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="축"
                         data-faction="police"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 25
-                            </span>
+                            <img src="./images/moon_yerin.jpg" alt="문예린" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 25
                             </span>
@@ -2050,7 +2227,7 @@
                                 🐂 丑 · 소
                             </span>
 
-                            <h4>윤세린</h4>
+                            <h4>문예린</h4>
 
                             <p class="character-role">
                                 치안국 현장요원
@@ -2074,18 +2251,15 @@
                     <!-- 26 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="유"
                         data-faction="police"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 26
-                            </span>
+                            <img src="./images/jo_hyunwoo.jpg" alt="조현우" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 26
                             </span>
@@ -2094,7 +2268,7 @@
                                 🐓 酉 · 닭
                             </span>
 
-                            <h4>강민재</h4>
+                            <h4>조현우</h4>
 
                             <p class="character-role">
                                 치안국 감시·분석요원
@@ -2117,18 +2291,15 @@
                     <!-- 30 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="유"
                         data-faction="police"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 30
-                            </span>
+                            <img src="./images/han_yejin.jpg" alt="한예진" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 30
                             </span>
@@ -2188,18 +2359,15 @@
                     <!-- 05 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="진"
                         data-faction="power"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 05
-                            </span>
+                            <img src="./images/lee_dohyun.jpg" alt="이도현" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 05
                             </span>
@@ -2232,18 +2400,15 @@
                     <!-- 10 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="유"
                         data-faction="power"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 10
-                            </span>
+                            <img src="./images/choi_narae.jpg" alt="최나래" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 10
                             </span>
@@ -2276,18 +2441,15 @@
                     <!-- 21 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="진"
                         data-faction="power"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 21
-                            </span>
+                            <img src="./images/lee_seojin.jpg" alt="이서진" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 21
                             </span>
@@ -2320,18 +2482,15 @@
                     <!-- 32 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="진"
                         data-faction="power"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 32
-                            </span>
+                            <img src="./images/cheonryong.jpg" alt="천룡" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 32
                             </span>
@@ -2392,18 +2551,15 @@
                     <!-- 12 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="해"
                         data-faction="corporate"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 12
-                            </span>
+                            <img src="./images/oh_subin.jpg" alt="오수빈" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 12
                             </span>
@@ -2436,18 +2592,15 @@
                     <!-- 23 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="유"
                         data-faction="corporate"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 23
-                            </span>
+                            <img src="./images/han_somi.jpg" alt="한소미" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 23
                             </span>
@@ -2480,18 +2633,15 @@
                     <!-- 27 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="사"
                         data-faction="corporate"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 27
-                            </span>
+                            <img src="./images/shin_yurim.jpg" alt="신유림" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 27
                             </span>
@@ -2500,7 +2650,7 @@
                                 🐍 巳 · 뱀
                             </span>
 
-                            <h4>서아린</h4>
+                            <h4>신유림</h4>
 
                             <p class="character-role">
                                 민간 기업 전략·협상 담당
@@ -2523,18 +2673,15 @@
                     <!-- 09 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="신"
                         data-faction="corporate"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 09
-                            </span>
+                            <img src="./images/kim_jaehyuk.jpg" alt="김재혁" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 09
                             </span>
@@ -2593,18 +2740,15 @@
                     <!-- 06 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="사"
                         data-faction="crime"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 06
-                            </span>
+                            <img src="./images/cha_yuri.jpg" alt="차유리" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 06
                             </span>
@@ -2637,18 +2781,15 @@
                     <!-- 17 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="해"
                         data-faction="crime"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 17
-                            </span>
+                            <img src="./images/ma_dosik.jpg" alt="마도식" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 17
                             </span>
@@ -2681,18 +2822,15 @@
                     <!-- 18 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="사"
                         data-faction="crime"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 18
-                            </span>
+                            <img src="./images/yoo_seoha.jpg" alt="유서하" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 18
                             </span>
@@ -2725,18 +2863,15 @@
                     <!-- 19 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="자"
                         data-faction="crime"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 19
-                            </span>
+                            <img src="./images/jang_hajun.jpg" alt="장하준" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 19
                             </span>
@@ -2769,18 +2904,15 @@
                     <!-- 20 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="신"
                         data-faction="crime"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 20
-                            </span>
+                            <img src="./images/kang_yuna.jpg" alt="강유나" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 20
                             </span>
@@ -2813,18 +2945,15 @@
                     <!-- 24 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="신"
                         data-faction="crime"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 24
-                            </span>
+                            <img src="./images/kim_doyoon.jpg" alt="김도윤" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 24
                             </span>
@@ -2833,7 +2962,7 @@
                                 🐒 申 · 원숭이
                             </span>
 
-                            <h4>권도하</h4>
+                            <h4>김도윤</h4>
 
                             <p class="character-role">
                                 범죄조직 기술·장비 담당
@@ -2857,18 +2986,15 @@
                     <!-- 31 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="인"
                         data-faction="crime"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 31
-                            </span>
+                            <img src="./images/baekmyeon.jpg" alt="백면" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 31
                             </span>
@@ -2928,18 +3054,15 @@
                     <!-- 07 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="오"
                         data-faction="independent"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 07
-                            </span>
+                            <img src="./images/lee_junhyuk.jpg" alt="이준혁" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 07
                             </span>
@@ -2972,18 +3095,15 @@
                     <!-- 08 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="미"
                         data-faction="independent"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 08
-                            </span>
+                            <img src="./images/seo_yeonwoo.jpg" alt="서연우" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 08
                             </span>
@@ -3016,18 +3136,15 @@
                     <!-- 02 -->
 
                     <article
-                        class="character-card"
+                        class="character-card" data-zodiac="축"
                         data-faction="independent"
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 02
-                            </span>
+                            <img src="./images/kang_taejun.jpg" alt="강태준" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 02
                             </span>
@@ -3065,13 +3182,10 @@
                     >
 
                         <div class="character-image">
-                            <span class="character-image-placeholder">
-                                IMAGE 29
-                            </span>
+                            <img src="./images/zero.jpg" alt="제로" loading="lazy">
                         </div>
 
                         <div class="character-body">
-
                             <span class="character-number">
                                 29
                             </span>
@@ -3080,7 +3194,7 @@
                                 🐈 고양이 · 예외
                             </span>
 
-                            <h4>「제로」</h4>
+                            <h4>제로</h4>
 
                             <p class="character-role">
                                 암흑사회 수장 · 고양이 지신
@@ -3124,7 +3238,7 @@
                     ARCHIVE 03
                 </span>
 
-                <h2>12구역 지도</h2>
+                <h2>십이지구역 지도</h2>
 
                 <p>
                     MAP OF SEOUL · TWELVE ZONES
@@ -3164,87 +3278,33 @@
             </div>
 
 
-            <!-- ZONE LIST -->
-
-            <div class="zone-grid">
-
-                <div class="zone-card">
-                    <span class="zone-number">ZONE 01</span>
-                    <strong>자구역 · 子</strong>
-                    <span>쥐</span>
-                </div>
-
-                <div class="zone-card">
-                    <span class="zone-number">ZONE 02</span>
-                    <strong>축구역 · 丑</strong>
-                    <span>소</span>
-                </div>
-
-                <div class="zone-card">
-                    <span class="zone-number">ZONE 03</span>
-                    <strong>인구역 · 寅</strong>
-                    <span>호랑이</span>
-                </div>
-
-                <div class="zone-card">
-                    <span class="zone-number">ZONE 04</span>
-                    <strong>묘구역 · 卯</strong>
-                    <span>토끼</span>
-                </div>
-
-                <div class="zone-card">
-                    <span class="zone-number">ZONE 05</span>
-                    <strong>진구역 · 辰</strong>
-                    <span>용</span>
-                </div>
-
-                <div class="zone-card">
-                    <span class="zone-number">ZONE 06</span>
-                    <strong>사구역 · 巳</strong>
-                    <span>뱀</span>
-                </div>
-
-                <div class="zone-card">
-                    <span class="zone-number">ZONE 07</span>
-                    <strong>오구역 · 午</strong>
-                    <span>말</span>
-                </div>
-
-                <div class="zone-card">
-                    <span class="zone-number">ZONE 08</span>
-                    <strong>미구역 · 未</strong>
-                    <span>양</span>
-                </div>
-
-                <div class="zone-card">
-                    <span class="zone-number">ZONE 09</span>
-                    <strong>신구역 · 申</strong>
-                    <span>원숭이</span>
-                </div>
-
-                <div class="zone-card">
-                    <span class="zone-number">ZONE 10</span>
-                    <strong>유구역 · 酉</strong>
-                    <span>닭</span>
-                </div>
-
-                <div class="zone-card">
-                    <span class="zone-number">ZONE 11</span>
-                    <strong>술구역 · 戌</strong>
-                    <span>개</span>
-                </div>
-
-                <div class="zone-card">
-                    <span class="zone-number">ZONE 12</span>
-                    <strong>해구역 · 亥</strong>
-                    <span>돼지</span>
-                </div>
-
-            </div>
-
         </section>
 
     </main>
+
+    <!-- CHARACTER IMAGE LIGHTBOX -->
+    <div
+        id="character-lightbox"
+        class="character-lightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-label="캐릭터 이미지 크게 보기"
+        aria-hidden="true"
+    >
+        <button
+            type="button"
+            class="character-lightbox-close"
+            id="character-lightbox-close"
+            aria-label="닫기"
+        >×</button>
+
+        <img
+            id="character-lightbox-image"
+            class="character-lightbox-image"
+            src=""
+            alt=""
+        >
+    </div>
 
 
     <!-- =========================================================
@@ -3356,54 +3416,162 @@
 
     /* =========================================================
        CHARACTER FILTER
+       Faction and zodiac are mutually exclusive: only one filter
+       mode can be active at a time.
     ========================================================= */
 
-    const filterButtons =
-        document.querySelectorAll(".filter-button");
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const zodiacFilterButtons = document.querySelectorAll(".zodiac-button");
+    const characterGroups = document.querySelectorAll(".character-group");
+    const characterCards = document.querySelectorAll(".character-card");
 
-    const characterGroups =
-        document.querySelectorAll(".character-group");
+    const zodiacKeyFromText = (text) => {
+        const map = {
+            "子":"자", "丑":"축", "寅":"인", "卯":"묘", "辰":"진", "巳":"사",
+            "午":"오", "未":"미", "申":"신", "酉":"유", "戌":"술", "亥":"해"
+        };
+        const found = text.match(/[子丑寅卯辰巳午未申酉戌亥]/);
+        return found ? map[found[0]] : null;
+    };
 
+    function resetFilterButtons(activeType, activeValue) {
+        filterButtons.forEach(button => {
+            const active = activeType === "faction" && button.dataset.filter === activeValue;
+            button.classList.toggle("active", active);
+        });
+
+        zodiacFilterButtons.forEach(button => {
+            const active = activeType === "zodiac" && button.dataset.zodiacFilter === activeValue;
+            button.classList.toggle("active", active);
+            button.setAttribute("aria-selected", active ? "true" : "false");
+        });
+    }
+
+    function showAllCharacters() {
+        characterGroups.forEach(group => {
+            group.style.display = "block";
+            group.removeAttribute("data-zodiac-empty");
+        });
+        characterCards.forEach(card => {
+            card.setAttribute("data-zodiac-hidden", "false");
+        });
+    }
+
+    function filterByFaction(filter) {
+        resetFilterButtons("faction", filter);
+
+        characterCards.forEach(card => card.removeAttribute("data-zodiac-hidden"));
+        characterGroups.forEach(group => {
+            group.removeAttribute("data-zodiac-empty");
+            group.style.display = (filter === "all" || group.dataset.group === filter) ? "block" : "none";
+        });
+    }
+
+    function filterByZodiac(key) {
+        resetFilterButtons("zodiac", key);
+
+        characterGroups.forEach(group => {
+            let visibleCount = 0;
+            const cards = group.querySelectorAll(".character-card");
+
+            cards.forEach(card => {
+                const cardKey = card.dataset.zodiac || zodiacKeyFromText(card.querySelector(".character-zodiac")?.textContent || "");
+                const visible = key === "all" || cardKey === key;
+                card.setAttribute("data-zodiac-hidden", visible ? "false" : "true");
+                if (visible) visibleCount++;
+            });
+
+            group.style.display = visibleCount > 0 ? "block" : "none";
+            if (visibleCount === 0) {
+                group.setAttribute("data-zodiac-empty", "true");
+            } else {
+                group.removeAttribute("data-zodiac-empty");
+            }
+        });
+    }
 
     filterButtons.forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                const filter =
-                    button.dataset.filter;
-
-
-                filterButtons.forEach(btn => {
-                    btn.classList.remove("active");
-                });
-
-                button.classList.add("active");
-
-
-                characterGroups.forEach(group => {
-
-                    if (
-                        filter === "all" ||
-                        group.dataset.group === filter
-                    ) {
-
-                        group.style.display = "block";
-
-                    } else {
-
-                        group.style.display = "none";
-
-                    }
-
-                });
-
-            }
-        );
-
+        button.addEventListener("click", () => {
+            filterByFaction(button.dataset.filter);
+        });
     });
 
+    zodiacFilterButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            filterByZodiac(button.dataset.zodiacFilter);
+        });
+    });
+
+    // Default: show every character; neither mode overrides the other.
+    showAllCharacters();
+    resetFilterButtons("faction", "all");
+    document.querySelector('.zodiac-button[data-zodiac-filter="all"]')?.classList.add("active");
+    document.querySelector('.zodiac-button[data-zodiac-filter="all"]')?.setAttribute("aria-selected", "true");
+
+
+
+    /* =========================================================
+       CHARACTER IMAGE LIGHTBOX
+       Click a character profile to view only the character image.
+    ========================================================= */
+
+    const characterLightbox = document.getElementById("character-lightbox");
+    const characterLightboxImage = document.getElementById("character-lightbox-image");
+    const characterLightboxClose = document.getElementById("character-lightbox-close");
+
+    function openCharacterLightbox(card) {
+        const image = card.querySelector(".character-image img");
+        if (!image || !image.getAttribute("src")) return;
+
+        characterLightboxImage.src = image.currentSrc || image.src;
+        characterLightboxImage.alt = image.alt || "캐릭터 이미지";
+
+        characterLightbox.classList.add("active");
+        characterLightbox.setAttribute("aria-hidden", "false");
+        document.body.classList.add("lightbox-open");
+        characterLightboxClose.focus();
+    }
+
+    function closeCharacterLightbox() {
+        characterLightbox.classList.remove("active");
+        characterLightbox.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("lightbox-open");
+        characterLightboxImage.src = "";
+        characterLightboxImage.alt = "";
+    }
+
+    characterCards.forEach(card => {
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("role", "button");
+        card.setAttribute("aria-label", `${card.querySelector("h4")?.textContent.trim() || "캐릭터"} 프로필 이미지 크게 보기`);
+
+        card.addEventListener("click", (event) => {
+            // 링크나 버튼을 추가했을 때 해당 요소의 기본 동작은 방해하지 않습니다.
+            if (event.target.closest("a, button")) return;
+            openCharacterLightbox(card);
+        });
+
+        card.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                openCharacterLightbox(card);
+            }
+        });
+    });
+
+    characterLightboxClose.addEventListener("click", closeCharacterLightbox);
+
+    characterLightbox.addEventListener("click", (event) => {
+        if (event.target === characterLightbox) {
+            closeCharacterLightbox();
+        }
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && characterLightbox.classList.contains("active")) {
+            closeCharacterLightbox();
+        }
+    });
 
     /* =========================================================
        INITIAL TAB
