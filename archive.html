@@ -10,25 +10,44 @@
 
     <style>
         /* =========================================================
-           ARCHIVE PAGE
+           ARCHIVE BASE
         ========================================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: #080809;
+            color: #eeeeee;
+            font-family:
+                "Noto Sans KR",
+                "Malgun Gothic",
+                Arial,
+                sans-serif;
+        }
+
+        button,
+        a {
+            font-family: inherit;
+        }
 
         .archive-page {
             min-height: 100vh;
-            width: 100%;
-            box-sizing: border-box;
-
             padding: 60px 30px 80px;
 
             background:
                 radial-gradient(
                     circle at 50% 0%,
-                    rgba(120, 120, 120, 0.10),
-                    transparent 45%
+                    rgba(255,255,255,0.07),
+                    transparent 40%
                 ),
-                #0b0b0d;
-
-            color: #f2f2f2;
+                #080809;
         }
 
 
@@ -37,43 +56,43 @@
         ========================================================= */
 
         .archive-header {
-            max-width: 1100px;
-            margin: 0 auto 40px;
-
+            max-width: 1200px;
+            margin: 0 auto 45px;
             text-align: center;
         }
 
         .archive-subtitle {
-            margin: 0 0 10px;
+            margin: 0 0 12px;
 
-            font-size: 11px;
-            letter-spacing: 5px;
-            color: #888;
+            color: #777;
+            font-size: 10px;
+            letter-spacing: 6px;
         }
 
         .archive-header h1 {
             margin: 0;
 
-            font-size: clamp(32px, 6vw, 54px);
+            font-size: clamp(34px, 6vw, 58px);
             font-weight: 700;
-            letter-spacing: 8px;
+            letter-spacing: 9px;
         }
 
         .archive-description {
             margin: 18px 0 0;
 
-            color: #888;
-            font-size: 14px;
-            line-height: 1.8;
+            color: #777;
+            font-size: 13px;
+            line-height: 1.9;
+            letter-spacing: 1px;
         }
 
 
         /* =========================================================
-           TAB NAVIGATION
+           MAIN TAB
         ========================================================= */
 
         .archive-tabs {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
 
             display: grid;
@@ -82,19 +101,20 @@
             border-top: 1px solid #29292d;
             border-bottom: 1px solid #29292d;
 
-            background: rgba(255, 255, 255, 0.015);
+            background: rgba(255,255,255,0.015);
         }
 
         .archive-tab {
             position: relative;
 
-            min-height: 76px;
+            min-height: 78px;
 
             border: 0;
             border-right: 1px solid #29292d;
 
             background: transparent;
-            color: #777;
+
+            color: #666;
 
             cursor: pointer;
 
@@ -109,12 +129,12 @@
 
         .archive-tab:hover {
             color: #ddd;
-            background: rgba(255, 255, 255, 0.035);
+            background: rgba(255,255,255,0.035);
         }
 
         .archive-tab.active {
             color: #fff;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255,255,255,0.055);
         }
 
         .archive-tab.active::after {
@@ -133,11 +153,12 @@
         .tab-number {
             display: block;
 
-            margin-bottom: 5px;
+            margin-bottom: 6px;
 
-            font-size: 10px;
-            letter-spacing: 2px;
             color: #555;
+
+            font-size: 9px;
+            letter-spacing: 3px;
         }
 
         .archive-tab.active .tab-number {
@@ -149,7 +170,8 @@
 
             font-size: 15px;
             font-weight: 600;
-            letter-spacing: 2px;
+
+            letter-spacing: 3px;
         }
 
         .tab-en {
@@ -157,9 +179,10 @@
 
             margin-top: 5px;
 
-            font-size: 9px;
-            letter-spacing: 2px;
             color: #555;
+
+            font-size: 8px;
+            letter-spacing: 2px;
         }
 
 
@@ -168,7 +191,7 @@
         ========================================================= */
 
         .archive-content {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -198,113 +221,347 @@
 
 
         /* =========================================================
-           SECTION TITLE
+           SECTION HEADING
         ========================================================= */
 
         .section-heading {
             margin-bottom: 35px;
 
-            border-left: 3px solid #fff;
             padding-left: 18px;
+
+            border-left: 3px solid #fff;
         }
 
-        .section-heading .section-number {
+        .section-number {
             display: block;
 
             margin-bottom: 7px;
 
-            font-size: 10px;
-            letter-spacing: 3px;
-            color: #666;
+            color: #555;
+
+            font-size: 9px;
+            letter-spacing: 4px;
         }
 
         .section-heading h2 {
             margin: 0;
 
             font-size: 30px;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
         }
 
         .section-heading p {
             margin: 10px 0 0;
 
-            color: #777;
-            font-size: 12px;
-            letter-spacing: 1px;
+            color: #666;
+
+            font-size: 11px;
+            letter-spacing: 2px;
         }
 
 
         /* =========================================================
-           WORLD
+           WORLD INTRO
         ========================================================= */
 
         .world-intro {
+            margin-bottom: 40px;
             padding: 30px;
 
-            margin-bottom: 35px;
-
             border: 1px solid #29292d;
-            background: rgba(255, 255, 255, 0.025);
 
-            line-height: 2;
-            color: #bbb;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.045),
+                    rgba(255,255,255,0.01)
+                );
+
+            color: #aaa;
+
             font-size: 14px;
+            line-height: 2;
         }
 
         .world-intro strong {
             color: #fff;
         }
 
-        .world-block {
-            margin-bottom: 45px;
+
+        /* =========================================================
+           TIMELINE
+        ========================================================= */
+
+        .timeline {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 12px;
+
+            margin-bottom: 50px;
         }
 
-        .world-block h3 {
-            margin: 0 0 15px;
+        .timeline-card {
+            padding: 22px;
 
-            font-size: 19px;
+            border: 1px solid #29292d;
+
+            background: rgba(255,255,255,0.02);
+        }
+
+        .timeline-year {
+            display: block;
+
+            margin-bottom: 9px;
+
+            color: #fff;
+
+            font-size: 20px;
+            font-weight: 700;
+
             letter-spacing: 2px;
         }
 
-        .world-block p {
+        .timeline-title {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #ddd;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .timeline-text {
+            color: #777;
+
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           WORLD BLOCK
+        ========================================================= */
+
+        .world-block {
+            margin-bottom: 50px;
+        }
+
+        .world-block h3 {
+            margin: 0 0 18px;
+
+            font-size: 20px;
+            letter-spacing: 3px;
+        }
+
+        .world-block > p {
             margin: 0;
 
             color: #999;
+
+            font-size: 13px;
             line-height: 2;
-            font-size: 14px;
         }
+
+
+        /* =========================================================
+           ZODIAC ABILITY
+        ========================================================= */
 
         .ability-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns: repeat(4, 1fr);
+
             gap: 12px;
         }
 
         .ability-card {
-            padding: 18px;
+            min-height: 120px;
+
+            padding: 20px;
 
             border: 1px solid #29292d;
-            background: rgba(255, 255, 255, 0.02);
+
+            background: rgba(255,255,255,0.02);
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .ability-card:hover {
+            transform: translateY(-3px);
+            border-color: #555;
         }
 
         .ability-card strong {
             display: block;
 
-            margin-bottom: 7px;
+            margin-bottom: 10px;
 
             color: #eee;
+
             font-size: 14px;
+            letter-spacing: 1px;
         }
 
         .ability-card span {
             color: #777;
-            font-size: 12px;
+
+            font-size: 11px;
             line-height: 1.7;
         }
 
 
         /* =========================================================
-           CHARACTERS
+           SIX FACTIONS
+        ========================================================= */
+
+        .faction-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 12px;
+        }
+
+        .faction-card {
+            padding: 24px;
+
+            border: 1px solid #29292d;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.04),
+                    rgba(255,255,255,0.01)
+                );
+        }
+
+        .faction-number {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #555;
+
+            font-size: 9px;
+            letter-spacing: 3px;
+        }
+
+        .faction-card h4 {
+            margin: 0 0 9px;
+
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+
+        .faction-en {
+            display: block;
+
+            margin-bottom: 13px;
+
+            color: #555;
+
+            font-size: 8px;
+            letter-spacing: 2px;
+        }
+
+        .faction-card p {
+            margin: 0;
+
+            color: #888;
+
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           CHARACTERS FILTER
+        ========================================================= */
+
+        .character-filter {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+
+            border-bottom: 1px solid #29292d;
+        }
+
+        .filter-button {
+            padding: 9px 14px;
+
+            border: 1px solid #303035;
+
+            background: transparent;
+
+            color: #666;
+
+            font-size: 10px;
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            transition:
+                color 0.2s ease,
+                border-color 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .filter-button:hover {
+            color: #ddd;
+            border-color: #555;
+        }
+
+        .filter-button.active {
+            color: #fff;
+            border-color: #888;
+            background: rgba(255,255,255,0.06);
+        }
+
+
+        /* =========================================================
+           FACTION TITLE
+        ========================================================= */
+
+        .character-faction-title {
+            margin: 35px 0 18px;
+
+            padding-bottom: 12px;
+
+            border-bottom: 1px solid #29292d;
+        }
+
+        .character-faction-title h3 {
+            margin: 0;
+
+            font-size: 18px;
+            letter-spacing: 3px;
+        }
+
+        .character-faction-title span {
+            display: block;
+
+            margin-top: 5px;
+
+            color: #555;
+
+            font-size: 8px;
+            letter-spacing: 2px;
+        }
+
+
+        /* =========================================================
+           CHARACTER GRID
         ========================================================= */
 
         .character-grid {
@@ -312,17 +569,19 @@
 
             grid-template-columns: repeat(2, 1fr);
 
-            gap: 16px;
+            gap: 15px;
         }
 
         .character-card {
             position: relative;
 
-            padding: 25px;
+            display: grid;
 
-            min-height: 170px;
+            grid-template-columns: 150px 1fr;
 
-            box-sizing: border-box;
+            min-height: 190px;
+
+            overflow: hidden;
 
             border: 1px solid #29292d;
 
@@ -343,55 +602,125 @@
             border-color: #555;
         }
 
+        .character-image {
+            position: relative;
+
+            min-height: 190px;
+
+            overflow: hidden;
+
+            border-right: 1px solid #29292d;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #111114,
+                    #080809
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .character-image img {
+            display: block;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+        .character-image-placeholder {
+            color: #333;
+
+            font-size: 9px;
+            letter-spacing: 2px;
+
+            text-align: center;
+        }
+
+        .character-body {
+            position: relative;
+
+            padding: 23px;
+        }
+
         .character-number {
             position: absolute;
 
-            top: 20px;
-            right: 20px;
-
-            font-size: 28px;
-            font-weight: 700;
+            top: 14px;
+            right: 18px;
 
             color: #222;
+
+            font-size: 25px;
+            font-weight: 700;
         }
 
         .character-zodiac {
             display: inline-block;
 
-            margin-bottom: 12px;
-
-            padding: 5px 9px;
+            margin-bottom: 11px;
+            padding: 5px 8px;
 
             border: 1px solid #333;
 
             color: #888;
 
-            font-size: 10px;
+            font-size: 9px;
             letter-spacing: 2px;
         }
 
-        .character-card h3 {
+        .character-card h4 {
             margin: 0 0 7px;
 
-            font-size: 20px;
+            font-size: 19px;
             letter-spacing: 2px;
+        }
+
+        .character-role {
+            margin: 0 0 13px;
+
+            color: #aaa;
+
+            font-size: 11px;
+            line-height: 1.6;
         }
 
         .character-info {
-            margin: 0 0 15px;
+            margin: 0 0 12px;
 
-            color: #777;
-            font-size: 11px;
+            color: #666;
+
+            font-size: 10px;
             letter-spacing: 1px;
+            line-height: 1.7;
         }
 
         .character-description {
             margin: 0;
 
-            color: #999;
+            color: #888;
 
-            font-size: 13px;
+            font-size: 11px;
             line-height: 1.8;
+        }
+
+        .character-card[data-faction="crime"] .character-zodiac {
+            border-color: #443333;
+            color: #aa7777;
+        }
+
+        .character-card[data-faction="power"] .character-zodiac {
+            border-color: #444438;
+            color: #aaa777;
+        }
+
+        .character-card[data-faction="police"] .character-zodiac {
+            border-color: #333d44;
+            color: #7890a0;
         }
 
 
@@ -400,21 +729,17 @@
         ========================================================= */
 
         .map-wrapper {
-            position: relative;
-
             padding: 15px;
 
             border: 1px solid #29292d;
 
-            background: #080809;
+            background: #070708;
         }
 
         .map-image {
             display: block;
 
             width: 100%;
-            height: auto;
-
             max-height: 75vh;
 
             object-fit: contain;
@@ -422,25 +747,96 @@
             border: 1px solid #222;
         }
 
-        .map-caption {
-            padding: 20px 10px 5px;
+        .map-placeholder {
+            min-height: 500px;
 
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-            color: #666;
+            border: 1px solid #222;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,255,255,0.035),
+                    transparent 60%
+                );
+
+            color: #444;
 
             font-size: 11px;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+        }
+
+        .map-caption {
+            padding: 18px 10px 5px;
+
+            color: #555;
+
+            font-size: 10px;
+            letter-spacing: 3px;
+
+            text-align: center;
         }
 
 
         /* =========================================================
-           BACK
+           MAP INFO
+        ========================================================= */
+
+        .zone-grid {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 10px;
+
+            margin-top: 25px;
+        }
+
+        .zone-card {
+            padding: 17px;
+
+            border: 1px solid #29292d;
+
+            background: rgba(255,255,255,0.02);
+        }
+
+        .zone-number {
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: #555;
+
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .zone-card strong {
+            display: block;
+
+            margin-bottom: 5px;
+
+            font-size: 13px;
+        }
+
+        .zone-card span {
+            color: #666;
+
+            font-size: 10px;
+        }
+
+
+        /* =========================================================
+           FOOTER
         ========================================================= */
 
         .archive-footer {
-            max-width: 1100px;
-            margin: 55px auto 0;
+            max-width: 1200px;
+
+            margin: 60px auto 0;
 
             text-align: center;
         }
@@ -454,14 +850,13 @@
             min-width: 150px;
             height: 44px;
 
-            box-sizing: border-box;
-
             border: 1px solid #333;
 
             color: #777;
+
             text-decoration: none;
 
-            font-size: 11px;
+            font-size: 10px;
             letter-spacing: 2px;
 
             transition:
@@ -472,7 +867,9 @@
 
         .back-main:hover {
             color: #fff;
+
             border-color: #777;
+
             background: rgba(255,255,255,0.04);
         }
 
@@ -480,6 +877,30 @@
         /* =========================================================
            MOBILE
         ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .ability-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .faction-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .character-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .zone-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+        }
+
 
         @media (max-width: 700px) {
 
@@ -496,7 +917,7 @@
             }
 
             .archive-description {
-                font-size: 12px;
+                font-size: 11px;
             }
 
             .archive-tabs {
@@ -508,33 +929,79 @@
             }
 
             .tab-title {
-                font-size: 12px;
+                font-size: 11px;
                 letter-spacing: 1px;
             }
 
             .tab-en {
                 font-size: 7px;
-                letter-spacing: 1px;
             }
 
             .section-heading h2 {
                 font-size: 24px;
             }
 
-            .ability-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .character-grid {
-                grid-template-columns: 1fr;
-            }
-
             .world-intro {
                 padding: 20px;
+
+                font-size: 12px;
+            }
+
+            .ability-grid,
+            .faction-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .character-card {
+                grid-template-columns: 105px 1fr;
+            }
+
+            .character-image {
+                min-height: 175px;
+            }
+
+            .character-body {
+                padding: 18px;
+            }
+
+            .character-card h4 {
+                font-size: 16px;
+            }
+
+            .character-description {
+                font-size: 10px;
+            }
+
+            .zone-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .map-wrapper {
                 padding: 7px;
+            }
+
+            .map-placeholder {
+                min-height: 300px;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            .character-card {
+                grid-template-columns: 1fr;
+            }
+
+            .character-image {
+                height: 230px;
+                min-height: 230px;
+
+                border-right: none;
+                border-bottom: 1px solid #29292d;
+            }
+
+            .zone-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
     </style>
@@ -544,6 +1011,7 @@
 <body>
 
 <div class="archive-page">
+
 
     <!-- =========================================================
          HEADER
@@ -558,14 +1026,15 @@
         <h1>십이지구역 기록</h1>
 
         <p class="archive-description">
-            지신 발현 이후 변화한 세계와 열두 구역의 기록
+            2016년 지신 발현 이후 변화한 서울과<br>
+            그 안에서 움직이는 인간들의 기록
         </p>
 
     </header>
 
 
     <!-- =========================================================
-         TAB MENU
+         TAB NAVIGATION
     ========================================================= -->
 
     <nav class="archive-tabs">
@@ -598,7 +1067,7 @@
             type="button"
         >
             <span class="tab-number">03</span>
-            <span class="tab-title">12지역 지도</span>
+            <span class="tab-title">12구역 지도</span>
             <span class="tab-en">ZODIAC MAP</span>
         </button>
 
@@ -613,7 +1082,7 @@
 
 
         <!-- =====================================================
-             WORLD TAB
+             WORLD
         ===================================================== -->
 
         <section
@@ -636,88 +1105,84 @@
             </div>
 
 
+            <!-- WORLD INTRO -->
+
             <div class="world-intro">
 
+                <strong>2016년.</strong>
+                전 세계적으로 설명할 수 없는 초월현상,
+                <strong>「지신 발현」</strong>이 발생했다.
+
+                인간은 누구나 자신에게 대응하는
+                <strong>12지신 중 하나의 지신</strong>을 지니게 되었으며,
+                신체적 특징과 감각, 본능, 능력이 변화하기 시작했다.
+
+                처음에는 개인의 특이체질 정도로 취급되었지만
+                지신 능력의 강도와 사회적 영향력이 커지면서
+                각국 정부는 지신을 국가적 관리 대상으로 지정했다.
+
+                한국 정부는 2018년
+                <strong>「지신관리청」</strong>을 설립했고,
+                수도 서울을 12개의 특별관리구역으로 재편했다.
+
+                현재는 발현으로부터 10년이 지난
                 <strong>2026년.</strong>
 
-                전 세계에서 동시에
-                <strong>「지신 발현」</strong>이라는
-                초월현상이 발생한다.
-
-                사람의 몸에 자신이 태어난 해에 대응하는
-                지신의 문양이 나타나고,
-                신체와 정신에 해당 동물의 특성이 발현되기 시작한다.
-
-                처음에는 단순한 신체 변화라고 생각했지만
-                시간이 지나면서 능력의 규모는 점점 커지기 시작했다.
+                지신은 더 이상 특별한 존재가 아니다.
+                그것은 이 도시에서 살아가는 모든 인간의 일부가 되었다.
 
             </div>
 
 
+            <!-- TIMELINE -->
+
             <div class="world-block">
 
-                <h3>지신 능력</h3>
+                <h3>지신 연혁</h3>
 
-                <div class="ability-grid">
+                <div class="timeline">
 
-                    <div class="ability-card">
-                        <strong>🐭 쥐</strong>
-                        <span>뛰어난 감각 · 은신 · 정보 탐지</span>
+                    <div class="timeline-card">
+                        <span class="timeline-year">2016</span>
+
+                        <span class="timeline-title">
+                            지신 발현
+                        </span>
+
+                        <span class="timeline-text">
+                            전 세계 인간에게 12지신의 흔적과
+                            특성이 나타나기 시작한다.
+                        </span>
                     </div>
 
-                    <div class="ability-card">
-                        <strong>🐂 소</strong>
-                        <span>괴력 · 내구력</span>
+
+                    <div class="timeline-card">
+                        <span class="timeline-year">2018</span>
+
+                        <span class="timeline-title">
+                            지신관리청 설립
+                        </span>
+
+                        <span class="timeline-text">
+                            대한민국 정부가 지신 관련
+                            등록·관리·연구·치안을 담당하는
+                            국가기관을 설립한다.
+                        </span>
                     </div>
 
-                    <div class="ability-card">
-                        <strong>🐅 호랑이</strong>
-                        <span>전투력 · 반사신경</span>
-                    </div>
 
-                    <div class="ability-card">
-                        <strong>🐇 토끼</strong>
-                        <span>회복력 · 민첩성</span>
-                    </div>
+                    <div class="timeline-card">
+                        <span class="timeline-year">2026</span>
 
-                    <div class="ability-card">
-                        <strong>🐉 용</strong>
-                        <span>원소 · 마력 계통의 강력한 능력</span>
-                    </div>
+                        <span class="timeline-title">
+                            현재
+                        </span>
 
-                    <div class="ability-card">
-                        <strong>🐍 뱀</strong>
-                        <span>독 · 감각 조작 · 정신계 능력</span>
-                    </div>
-
-                    <div class="ability-card">
-                        <strong>🐎 말</strong>
-                        <span>초고속 이동</span>
-                    </div>
-
-                    <div class="ability-card">
-                        <strong>🐐 양</strong>
-                        <span>정신 안정 · 치유</span>
-                    </div>
-
-                    <div class="ability-card">
-                        <strong>🐒 원숭이</strong>
-                        <span>도구 조작 · 창의적 능력</span>
-                    </div>
-
-                    <div class="ability-card">
-                        <strong>🐓 닭</strong>
-                        <span>감지 · 예지</span>
-                    </div>
-
-                    <div class="ability-card">
-                        <strong>🐕 개</strong>
-                        <span>추적 · 후각 · 위험 감지</span>
-                    </div>
-
-                    <div class="ability-card">
-                        <strong>🐖 돼지</strong>
-                        <span>생명력 · 재생 · 신체 강화</span>
+                        <span class="timeline-text">
+                            서울은 12개의 특별관리구역으로
+                            나뉘어 있으며 각 세력의 이해관계가
+                            복잡하게 충돌하고 있다.
+                        </span>
                     </div>
 
                 </div>
@@ -725,18 +1190,260 @@
             </div>
 
 
+            <!-- ZODIAC -->
+
             <div class="world-block">
 
-                <h3>십이지구역</h3>
+                <h3>12지신</h3>
+
+                <div class="ability-grid">
+
+                    <div class="ability-card">
+                        <strong>🐭 子 · 쥐</strong>
+                        <span>
+                            감각 · 은신 · 탐지 · 정보수집
+                        </span>
+                    </div>
+
+                    <div class="ability-card">
+                        <strong>🐂 丑 · 소</strong>
+                        <span>
+                            괴력 · 내구력 · 지구력
+                        </span>
+                    </div>
+
+                    <div class="ability-card">
+                        <strong>🐅 寅 · 호랑이</strong>
+                        <span>
+                            전투감각 · 반사신경 · 신체강화
+                        </span>
+                    </div>
+
+                    <div class="ability-card">
+                        <strong>🐇 卯 · 토끼</strong>
+                        <span>
+                            회복력 · 민첩성 · 감각
+                        </span>
+                    </div>
+
+                    <div class="ability-card">
+                        <strong>🐉 辰 · 용</strong>
+                        <span>
+                            강력한 에너지 · 원소계 능력 · 지배력
+                        </span>
+                    </div>
+
+                    <div class="ability-card">
+                        <strong>🐍 巳 · 뱀</strong>
+                        <span>
+                            독 · 감각조작 · 은밀한 움직임
+                        </span>
+                    </div>
+
+                    <div class="ability-card">
+                        <strong>🐎 午 · 말</strong>
+                        <span>
+                            고속이동 · 순발력 · 지구력
+                        </span>
+                    </div>
+
+                    <div class="ability-card">
+                        <strong>🐐 未 · 양</strong>
+                        <span>
+                            정신안정 · 치유 · 감정완화
+                        </span>
+                    </div>
+
+                    <div class="ability-card">
+                        <strong>🐒 申 · 원숭이</strong>
+                        <span>
+                            도구조작 · 응용력 · 창의적 사고
+                        </span>
+                    </div>
+
+                    <div class="ability-card">
+                        <strong>🐓 酉 · 닭</strong>
+                        <span>
+                            감지 · 시야 · 예측 · 관찰
+                        </span>
+                    </div>
+
+                    <div class="ability-card">
+                        <strong>🐕 戌 · 개</strong>
+                        <span>
+                            추적 · 후각 · 위험감지
+                        </span>
+                    </div>
+
+                    <div class="ability-card">
+                        <strong>🐖 亥 · 돼지</strong>
+                        <span>
+                            생명력 · 재생 · 신체강화
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SEOUL -->
+
+            <div class="world-block">
+
+                <h3>서울 12특별관리구역</h3>
 
                 <p>
-                    정부는 혼란을 막기 위해 서울을 12개의
-                    특별관리구역으로 나누었다.
-                    같은 지신을 가진 사람들은 자신의 지신구역에서
-                    생활하도록 강제되었으며,
-                    시간이 지나면서 각 구역에는 해당 지신의 특성이
-                    도시 자체에 스며들기 시작했다.
+                    지신관리청은 서울을 12개의 특별관리구역으로
+                    지정했다. 각 구역은 행정상 구분을 넘어
+                    지신의 특성과 사회적 기능이 강하게 반영된
+                    도시권으로 발전했다.
+
+                    그러나 구역은 완전히 분리된 독립도시가 아니다.
+                    사람과 물자, 정보가 끊임없이 이동하며
+                    경찰과 관리청, 기업, 범죄조직의 이해관계가
+                    서로 충돌한다.
+
+                    따라서 서울 전체가 하나의 거대한
+                    사회적 실험장처럼 움직이고 있다.
                 </p>
+
+            </div>
+
+
+            <!-- FACTIONS -->
+
+            <div class="world-block">
+
+                <h3>6대 세력</h3>
+
+                <div class="faction-grid">
+
+                    <div class="faction-card">
+
+                        <span class="faction-number">
+                            FACTION 01
+                        </span>
+
+                        <h4>지신관리청</h4>
+
+                        <span class="faction-en">
+                            ZODIAC MANAGEMENT AGENCY
+                        </span>
+
+                        <p>
+                            지신 등록과 연구, 특별관리구역의
+                            행정 및 지신 관련 사건을 담당하는
+                            국가기관.
+                        </p>
+
+                    </div>
+
+
+                    <div class="faction-card">
+
+                        <span class="faction-number">
+                            FACTION 02
+                        </span>
+
+                        <h4>치안국 · 특수경찰</h4>
+
+                        <span class="faction-en">
+                            SPECIAL POLICE
+                        </span>
+
+                        <p>
+                            지신 능력을 이용한 강력범죄와
+                            초상 사건을 담당하는 국가 치안 세력.
+                        </p>
+
+                    </div>
+
+
+                    <div class="faction-card">
+
+                        <span class="faction-number">
+                            FACTION 03
+                        </span>
+
+                        <h4>중앙 권력층</h4>
+
+                        <span class="faction-en">
+                            CENTRAL POWER
+                        </span>
+
+                        <p>
+                            정부와 정치권을 중심으로 움직이는
+                            국가 최고 권력층. 지신 사회의
+                            방향 자체에 영향력을 행사한다.
+                        </p>
+
+                    </div>
+
+
+                    <div class="faction-card">
+
+                        <span class="faction-number">
+                            FACTION 04
+                        </span>
+
+                        <h4>기업 · 민간 권력</h4>
+
+                        <span class="faction-en">
+                            CORPORATE POWER
+                        </span>
+
+                        <p>
+                            대기업과 미디어, 기술 및 민간자본을
+                            기반으로 도시의 경제와 여론을
+                            움직이는 세력.
+                        </p>
+
+                    </div>
+
+
+                    <div class="faction-card">
+
+                        <span class="faction-number">
+                            FACTION 05
+                        </span>
+
+                        <h4>암시장 · 범죄조직</h4>
+
+                        <span class="faction-en">
+                            UNDERWORLD
+                        </span>
+
+                        <p>
+                            암시장과 밀수, 정보거래, 절도,
+                            암살 등을 중심으로 움직이는
+                            복수의 범죄 파벌.
+                        </p>
+
+                    </div>
+
+
+                    <div class="faction-card">
+
+                        <span class="faction-number">
+                            FACTION 06
+                        </span>
+
+                        <h4>독립 세력</h4>
+
+                        <span class="faction-en">
+                            INDEPENDENTS
+                        </span>
+
+                        <p>
+                            어느 조직에도 완전히 속하지 않는
+                            개인과 집단. 도시의 흐름을
+                            예측할 수 없게 만드는 변수들.
+                        </p>
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -744,7 +1451,7 @@
 
 
         <!-- =====================================================
-             CHARACTERS TAB
+             CHARACTERS
         ===================================================== -->
 
         <section
@@ -767,273 +1474,1643 @@
             </div>
 
 
-            <div class="character-grid">
-
-
-                <article class="character-card">
-
-                    <span class="character-number">01</span>
-
-                    <span class="character-zodiac">
-                        🐭 子 · 쥐
-                    </span>
-
-                    <h3>캐릭터 이름</h3>
-
-                    <p class="character-info">
-                        20세 · 여성 · 자구역
-                    </p>
-
-                    <p class="character-description">
-                        정보와 소문이 넘쳐나는 자구역에서 활동하는
-                        정보상. 뛰어난 감각과 은신 능력을 지녔다.
-                    </p>
-
-                </article>
-
-
-                <article class="character-card">
-
-                    <span class="character-number">02</span>
-
-                    <span class="character-zodiac">
-                        🐂 丑 · 소
-                    </span>
-
-                    <h3>캐릭터 이름</h3>
-
-                    <p class="character-info">
-                        24세 · 남성 · 축구역
-                    </p>
-
-                    <p class="character-description">
-                        압도적인 힘과 내구력을 가진 인물.
-                        겉보기와 달리 주변 사람들을 챙기는 성격이다.
-                    </p>
-
-                </article>
-
-
-                <article class="character-card">
-
-                    <span class="character-number">03</span>
-
-                    <span class="character-zodiac">
-                        🐅 寅 · 호랑이
-                    </span>
-
-                    <h3>캐릭터 이름</h3>
-
-                    <p class="character-info">
-                        22세 · 여성 · 인구역
-                    </p>
-
-                    <p class="character-description">
-                        강함을 명예로 생각하는 인구역의 전투원.
-                        뛰어난 반사신경과 전투 감각을 자랑한다.
-                    </p>
-
-                </article>
-
-
-                <article class="character-card">
-
-                    <span class="character-number">04</span>
-
-                    <span class="character-zodiac">
-                        🐇 卯 · 토끼
-                    </span>
-
-                    <h3>캐릭터 이름</h3>
-
-                    <p class="character-info">
-                        21세 · 여성 · 묘구역
-                    </p>
-
-                    <p class="character-description">
-                        빠른 회복력과 민첩성을 가진 의료 관계자.
-                    </p>
-
-                </article>
-
-
-                <article class="character-card">
-
-                    <span class="character-number">05</span>
-
-                    <span class="character-zodiac">
-                        🐉 辰 · 용
-                    </span>
-
-                    <h3>캐릭터 이름</h3>
-
-                    <p class="character-info">
-                        25세 · 남성 · 진구역
-                    </p>
-
-                    <p class="character-description">
-                        희귀한 용 지신 능력자.
-                        강력한 원소계 능력을 보유하고 있다.
-                    </p>
-
-                </article>
-
-
-                <article class="character-card">
-
-                    <span class="character-number">06</span>
-
-                    <span class="character-zodiac">
-                        🐍 巳 · 뱀
-                    </span>
-
-                    <h3>캐릭터 이름</h3>
-
-                    <p class="character-info">
-                        23세 · 여성 · 사구역
-                    </p>
-
-                    <p class="character-description">
-                        감각 조작과 독을 사용하는 위험한 인물.
-                        암시장과 깊은 관계를 가지고 있다.
-                    </p>
-
-                </article>
-
-
-                <article class="character-card">
-
-                    <span class="character-number">07</span>
-
-                    <span class="character-zodiac">
-                        🐎 午 · 말
-                    </span>
-
-                    <h3>캐릭터 이름</h3>
-
-                    <p class="character-info">
-                        20세 · 남성 · 오구역
-                    </p>
-
-                    <p class="character-description">
-                        도시 최고의 속도를 자랑하는 배달원.
-                    </p>
-
-                </article>
-
-
-                <article class="character-card">
-
-                    <span class="character-number">08</span>
-
-                    <span class="character-zodiac">
-                        🐐 未 · 양
-                    </span>
-
-                    <h3>캐릭터 이름</h3>
-
-                    <p class="character-info">
-                        22세 · 여성 · 미구역
-                    </p>
-
-                    <p class="character-description">
-                        정신 안정과 치유 능력을 가진 성원의 치유사.
-                    </p>
-
-                </article>
-
-
-                <article class="character-card">
-
-                    <span class="character-number">09</span>
-
-                    <span class="character-zodiac">
-                        🐒 申 · 원숭이
-                    </span>
-
-                    <h3>캐릭터 이름</h3>
-
-                    <p class="character-info">
-                        19세 · 남성 · 신구역
-                    </p>
-
-                    <p class="character-description">
-                        기계와 장비를 자유롭게 다루는 천재 엔지니어.
-                    </p>
-
-                </article>
-
-
-                <article class="character-card">
-
-                    <span class="character-number">10</span>
-
-                    <span class="character-zodiac">
-                        🐓 酉 · 닭
-                    </span>
-
-                    <h3>캐릭터 이름</h3>
-
-                    <p class="character-info">
-                        21세 · 여성 · 유구역
-                    </p>
-
-                    <p class="character-description">
-                        짧은 미래를 감지할 수 있는 방송 기자.
-                    </p>
-
-                </article>
-
-
-                <article class="character-card">
-
-                    <span class="character-number">11</span>
-
-                    <span class="character-zodiac">
-                        🐕 戌 · 개
-                    </span>
-
-                    <h3>캐릭터 이름</h3>
-
-                    <p class="character-info">
-                        26세 · 남성 · 술구역
-                    </p>
-
-                    <p class="character-description">
-                        뛰어난 후각과 추적 능력을 가진 보안 전문가.
-                    </p>
-
-                </article>
-
-
-                <article class="character-card">
-
-                    <span class="character-number">12</span>
-
-                    <span class="character-zodiac">
-                        🐖 亥 · 돼지
-                    </span>
-
-                    <h3>캐릭터 이름</h3>
-
-                    <p class="character-info">
-                        24세 · 여성 · 해구역
-                    </p>
-
-                    <p class="character-description">
-                        뛰어난 생명력과 재생 능력을 가진 인물.
-                    </p>
-
-                </article>
-
+            <!-- FILTER -->
+
+            <div class="character-filter">
+
+                <button
+                    class="filter-button active"
+                    data-filter="all"
+                    type="button"
+                >
+                    ALL · 전체
+                </button>
+
+                <button
+                    class="filter-button"
+                    data-filter="agency"
+                    type="button"
+                >
+                    관리청
+                </button>
+
+                <button
+                    class="filter-button"
+                    data-filter="police"
+                    type="button"
+                >
+                    경찰
+                </button>
+
+                <button
+                    class="filter-button"
+                    data-filter="power"
+                    type="button"
+                >
+                    중앙 권력
+                </button>
+
+                <button
+                    class="filter-button"
+                    data-filter="corporate"
+                    type="button"
+                >
+                    기업·민간
+                </button>
+
+                <button
+                    class="filter-button"
+                    data-filter="crime"
+                    type="button"
+                >
+                    범죄조직
+                </button>
+
+                <button
+                    class="filter-button"
+                    data-filter="independent"
+                    type="button"
+                >
+                    독립
+                </button>
 
             </div>
+
+
+            <!-- =================================================
+                 FACTION 01
+            ================================================== -->
+
+            <div
+                class="character-group"
+                data-group="agency"
+            >
+
+                <div class="character-faction-title">
+
+                    <h3>01 · 지신관리청</h3>
+
+                    <span>
+                        ZODIAC MANAGEMENT AGENCY · 7 PERSONS
+                    </span>
+
+                </div>
+
+
+                <div class="character-grid">
+
+
+                    <!-- 01 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="agency"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 01
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                01
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐭 子 · 쥐
+                            </span>
+
+                            <h4>한세아</h4>
+
+                            <p class="character-role">
+                                관리청 협력 정보 브로커
+                            </p>
+
+                            <p class="character-info">
+                                23세 · 여성 · ENFP 7w6
+                            </p>
+
+                            <p class="character-description">
+                                영리하고 재빠르며 정보와 사람을
+                                모으는 데 능하다. 필요하면
+                                약삭빠르게 행동하는 생존형 인물.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 04 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="agency"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 04
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                04
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐇 卯 · 토끼
+                            </span>
+
+                            <h4>윤하린</h4>
+
+                            <p class="character-role">
+                                지신관리청 의료 담당
+                            </p>
+
+                            <p class="character-info">
+                                22세 · 여성 · ISFJ 6w5
+                            </p>
+
+                            <p class="character-description">
+                                온순하고 겁이 많지만 위기에서는
+                                강한 생존본능을 드러낸다.
+                                안전한 사람 곁을 선호한다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 13 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="agency"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 13
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                13
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐉 辰 · 용
+                            </span>
+
+                            <h4>장민석</h4>
+
+                            <p class="character-role">
+                                국가 지신관리청 국장
+                            </p>
+
+                            <p class="character-info">
+                                45세 · 남성 · INTJ 5w6
+                            </p>
+
+                            <p class="character-description">
+                                냉철하고 권위적이며 장기적인
+                                계획과 도시 전체의 통제를
+                                중시하는 관리자.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 14 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="agency"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 14
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                14
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐕 戌 · 개
+                            </span>
+
+                            <h4>노유진</h4>
+
+                            <p class="character-role">
+                                지신관리청 현장요원
+                            </p>
+
+                            <p class="character-info">
+                                30세 · 여성 · ISFJ 6w5
+                            </p>
+
+                            <p class="character-description">
+                                신중하고 경계심이 많지만
+                                동료를 끝까지 챙기는 보호형
+                                현장요원.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 15 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="agency"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 15
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                15
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐒 申 · 원숭이
+                            </span>
+
+                            <h4>이성호</h4>
+
+                            <p class="character-role">
+                                지신연구소 수석연구원
+                            </p>
+
+                            <p class="character-info">
+                                38세 · 남성 · INTP 5w4
+                            </p>
+
+                            <p class="character-description">
+                                기존 이론을 의심하고 새로운
+                                가설을 세우는 천재 연구자.
+                                연구에 몰두하면 주변을 잊는다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 16 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="agency"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 16
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                16
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐇 卯 · 토끼
+                            </span>
+
+                            <h4>백지안</h4>
+
+                            <p class="character-role">
+                                지신관리청 신입 연구·현장요원
+                            </p>
+
+                            <p class="character-info">
+                                19세 · 여성 · INFP 4w5
+                            </p>
+
+                            <p class="character-description">
+                                낯선 환경에 민감한 소심한 인물.
+                                위기 상황에서는 강한 생존본능이
+                                발현된다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 28 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="agency"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 28
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                28
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐭 子 · 쥐
+                            </span>
+
+                            <h4>류다현</h4>
+
+                            <p class="character-role">
+                                지신관리청 정보·행정 담당
+                            </p>
+
+                            <p class="character-info">
+                                쥐 지신
+                            </p>
+
+                            <p class="character-description">
+                                관리청 내부 정보와 기록을
+                                다루는 인물. 도시 곳곳에서
+                                흘러드는 정보를 연결한다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FACTION 02
+            ================================================== -->
+
+            <div
+                class="character-group"
+                data-group="police"
+            >
+
+                <div class="character-faction-title">
+
+                    <h3>02 · 치안국 · 특수경찰</h3>
+
+                    <span>
+                        SPECIAL POLICE · 6 PERSONS
+                    </span>
+
+                </div>
+
+
+                <div class="character-grid">
+
+
+                    <!-- 03 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="police"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 03
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                03
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐅 寅 · 호랑이
+                            </span>
+
+                            <h4>서채린</h4>
+
+                            <p class="character-role">
+                                특수경찰 전투요원
+                            </p>
+
+                            <p class="character-info">
+                                25세 · 여성 · ESTP 8w7
+                            </p>
+
+                            <p class="character-description">
+                                강하고 독립적이며 승부욕이
+                                강하다. 위협에는 즉각적으로
+                                공격적으로 반응한다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 11 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="police"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 11
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                11
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐕 戌 · 개
+                            </span>
+
+                            <h4>박건우</h4>
+
+                            <p class="character-role">
+                                특수수사관
+                            </p>
+
+                            <p class="character-info">
+                                34세 · 남성 · ISTJ 6w5
+                            </p>
+
+                            <p class="character-description">
+                                뛰어난 후각과 관찰력으로
+                                사건 현장의 흔적을 집요하게
+                                추적하는 수사관.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 22 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="police"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 22
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                22
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐂 丑 · 소
+                            </span>
+
+                            <h4>정우석</h4>
+
+                            <p class="character-role">
+                                치안 장비기업 출신 협력관
+                            </p>
+
+                            <p class="character-info">
+                                36세 · 남성 · ISTJ 1w2
+                            </p>
+
+                            <p class="character-description">
+                                실용주의적이고 끈기가 강하다.
+                                실제 성과와 품질을 중요하게
+                                생각하는 고집 센 인물.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 25 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="police"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 25
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                25
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐂 丑 · 소
+                            </span>
+
+                            <h4>윤세린</h4>
+
+                            <p class="character-role">
+                                치안국 현장요원
+                            </p>
+
+                            <p class="character-info">
+                                소 지신
+                            </p>
+
+                            <p class="character-description">
+                                현장 대응과 통제에 특화된
+                                치안국 인력. 강한 체력과
+                                끈기를 바탕으로 사건을 처리한다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 26 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="police"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 26
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                26
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐓 酉 · 닭
+                            </span>
+
+                            <h4>강민재</h4>
+
+                            <p class="character-role">
+                                치안국 감시·분석요원
+                            </p>
+
+                            <p class="character-info">
+                                닭 지신
+                            </p>
+
+                            <p class="character-description">
+                                도시의 이상징후와 사건 현장을
+                                분석하고 감시하는 치안 인력.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 30 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="police"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 30
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                30
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐓 酉 · 닭
+                            </span>
+
+                            <h4>한예진</h4>
+
+                            <p class="character-role">
+                                예지몽 능력자 · 치안 협력 인물
+                            </p>
+
+                            <p class="character-info">
+                                17세 · 여성 · INFJ 4w5
+                            </p>
+
+                            <p class="character-description">
+                                미래를 꿈으로 보는 소녀.
+                                자신이 본 미래 때문에 불안해하며
+                                사건의 중요한 단서가 된다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FACTION 03
+            ================================================== -->
+
+            <div
+                class="character-group"
+                data-group="power"
+            >
+
+                <div class="character-faction-title">
+
+                    <h3>03 · 중앙 권력층</h3>
+
+                    <span>
+                        CENTRAL POWER · 4 PERSONS
+                    </span>
+
+                </div>
+
+
+                <div class="character-grid">
+
+
+                    <!-- 05 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="power"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 05
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                05
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐉 辰 · 용
+                            </span>
+
+                            <h4>이도현</h4>
+
+                            <p class="character-role">
+                                대기업 후계자 · 진구역 대표
+                            </p>
+
+                            <p class="character-info">
+                                31세 · 남성 · ENTJ 3w4
+                            </p>
+
+                            <p class="character-description">
+                                야심과 지배욕이 강한 권력가.
+                                자신이 특별한 존재라는 의식과
+                                강한 카리스마를 지닌다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 10 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="power"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 10
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                10
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐓 酉 · 닭
+                            </span>
+
+                            <h4>최나래</h4>
+
+                            <p class="character-role">
+                                유명 앵커 · 국가 여론 창구
+                            </p>
+
+                            <p class="character-info">
+                                28세 · 여성 · ENFJ 3w2
+                            </p>
+
+                            <p class="character-description">
+                                자신의 이미지를 완벽하게
+                                관리하는 유명 방송인.
+                                작은 변화도 놓치지 않는 관찰자.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 21 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="power"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 21
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                21
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐉 辰 · 용
+                            </span>
+
+                            <h4>이서진</h4>
+
+                            <p class="character-role">
+                                대기업 전략임원
+                            </p>
+
+                            <p class="character-info">
+                                28세 · 여성 · ENTJ 3w4
+                            </p>
+
+                            <p class="character-description">
+                                냉철하고 야심찬 전략가.
+                                경쟁과 성취를 당연하게 여기며
+                                사람을 영향력 아래 두려 한다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 32 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="power"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 32
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                32
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐉 辰 · 용
+                            </span>
+
+                            <h4>천룡</h4>
+
+                            <p class="character-role">
+                                대한민국 대통령급 최고 권력자
+                            </p>
+
+                            <p class="character-info">
+                                성별 · 나이 불명 · 용 지신
+                            </p>
+
+                            <p class="character-description">
+                                국가 최고위 권력층에 위치한
+                                초월적 영향력의 소유자.
+                                지신 사회의 질서와 방향에
+                                직접적인 영향력을 행사한다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FACTION 04
+            ================================================== -->
+
+            <div
+                class="character-group"
+                data-group="corporate"
+            >
+
+                <div class="character-faction-title">
+
+                    <h3>04 · 기업 · 민간 권력</h3>
+
+                    <span>
+                        CORPORATE & MEDIA · 4 PERSONS
+                    </span>
+
+                </div>
+
+
+                <div class="character-grid">
+
+
+                    <!-- 12 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="corporate"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 12
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                12
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐖 亥 · 돼지
+                            </span>
+
+                            <h4>오수빈</h4>
+
+                            <p class="character-role">
+                                호텔 · 유통 재벌
+                            </p>
+
+                            <p class="character-info">
+                                25세 · 여성 · ESFP 7w6
+                            </p>
+
+                            <p class="character-description">
+                                풍요와 쾌락을 좋아하지만
+                                현실 감각과 생존력이 뛰어난
+                                재벌가 인물.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 23 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="corporate"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 23
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                23
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐓 酉 · 닭
+                            </span>
+
+                            <h4>한소미</h4>
+
+                            <p class="character-role">
+                                인플루언서 · 미디어 스타
+                            </p>
+
+                            <p class="character-info">
+                                20세 · 여성 · ESFP 3w2
+                            </p>
+
+                            <p class="character-description">
+                                화려하고 자신감 넘치며
+                                대중의 반응을 빠르게 읽는다.
+                                도시의 유행과 여론을 움직인다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 27 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="corporate"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 27
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                27
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐍 巳 · 뱀
+                            </span>
+
+                            <h4>서아린</h4>
+
+                            <p class="character-role">
+                                민간 기업 전략·협상 담당
+                            </p>
+
+                            <p class="character-info">
+                                뱀 지신
+                            </p>
+
+                            <p class="character-description">
+                                기업 내부의 협상과 정보관계를
+                                담당하는 냉정한 실무형 인물.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 09 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="corporate"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 09
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                09
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐒 申 · 원숭이
+                            </span>
+
+                            <h4>김재혁</h4>
+
+                            <p class="character-role">
+                                천재 엔지니어 · 민간 기술자
+                            </p>
+
+                            <p class="character-info">
+                                21세 · 남성 · ENTP 7w8
+                            </p>
+
+                            <p class="character-description">
+                                기계와 기술을 자유롭게 다루며
+                                규칙을 우회하는 방법을 즐긴다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FACTION 05
+            ================================================== -->
+
+            <div
+                class="character-group"
+                data-group="crime"
+            >
+
+                <div class="character-faction-title">
+
+                    <h3>05 · 암시장 · 범죄조직</h3>
+
+                    <span>
+                        UNDERWORLD · 7 PERSONS
+                    </span>
+
+                </div>
+
+
+                <div class="character-grid">
+
+
+                    <!-- 06 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="crime"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 06
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                06
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐍 巳 · 뱀
+                            </span>
+
+                            <h4>차유리</h4>
+
+                            <p class="character-role">
+                                카지노 CEO · 암시장 실력자
+                            </p>
+
+                            <p class="character-info">
+                                27세 · 여성 · INTJ 5w6
+                            </p>
+
+                            <p class="character-description">
+                                냉정하고 계산적이다.
+                                함정과 심리전을 선호하며
+                                상대의 약점을 이용한다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 17 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="crime"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 17
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                17
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐖 亥 · 돼지
+                            </span>
+
+                            <h4>마도식</h4>
+
+                            <p class="character-role">
+                                암시장 조직 보스
+                            </p>
+
+                            <p class="character-info">
+                                40세 · 남성 · ESTP 8w7
+                            </p>
+
+                            <p class="character-description">
+                                탐욕스럽고 호탕한 현실주의자.
+                                돈과 권력을 좋아하지만 자기
+                                사람에게는 크게 베푼다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 18 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="crime"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 18
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                18
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐍 巳 · 뱀
+                            </span>
+
+                            <h4>유서하</h4>
+
+                            <p class="character-role">
+                                암살자
+                            </p>
+
+                            <p class="character-info">
+                                24세 · 여성 · ISTP 5w6
+                            </p>
+
+                            <p class="character-description">
+                                감정을 거의 드러내지 않는
+                                냉정한 암살자. 상대의 가장
+                                약한 순간을 노린다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 19 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="crime"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 19
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                19
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐭 子 · 쥐
+                            </span>
+
+                            <h4>장하준</h4>
+
+                            <p class="character-role">
+                                밀수업자
+                            </p>
+
+                            <p class="character-info">
+                                27세 · 남성 · ENTP 7w8
+                            </p>
+
+                            <p class="character-description">
+                                위기에서 탈출구를 찾는 데
+                                천재적인 밀수업자. 정보와
+                                인맥을 끊임없이 축적한다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 20 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="crime"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 20
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                20
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐒 申 · 원숭이
+                            </span>
+
+                            <h4>강유나</h4>
+
+                            <p class="character-role">
+                                전문 도둑
+                            </p>
+
+                            <p class="character-info">
+                                22세 · 여성 · ENTP 7w6
+                            </p>
+
+                            <p class="character-description">
+                                금지된 장소일수록 들어가 보고
+                                싶어 하는 장난스러운 도둑.
+                                손재주와 즉흥성이 뛰어나다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 24 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="crime"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 24
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                24
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐒 申 · 원숭이
+                            </span>
+
+                            <h4>권도하</h4>
+
+                            <p class="character-role">
+                                범죄조직 기술·장비 담당
+                            </p>
+
+                            <p class="character-info">
+                                원숭이 지신
+                            </p>
+
+                            <p class="character-description">
+                                범죄조직의 장비와 기술을
+                                담당하는 인물. 기계와 도구를
+                                이용한 문제 해결에 능하다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 31 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="crime"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 31
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                31
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐅 寅 · 호랑이
+                            </span>
+
+                            <h4>백면</h4>
+
+                            <p class="character-role">
+                                무소속 개인 범죄자 · 사냥꾼
+                            </p>
+
+                            <p class="character-info">
+                                남성 · 나이 불명 · ISTP 8w9
+                            </p>
+
+                            <p class="character-description">
+                                제로와 아무런 관계가 없는
+                                독립적인 범죄자. 강자를 찾아
+                                싸우는 위험한 사냥꾼이다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FACTION 06
+            ================================================== -->
+
+            <div
+                class="character-group"
+                data-group="independent"
+            >
+
+                <div class="character-faction-title">
+
+                    <h3>06 · 독립 세력</h3>
+
+                    <span>
+                        INDEPENDENTS · 4 PERSONS
+                    </span>
+
+                </div>
+
+
+                <div class="character-grid">
+
+
+                    <!-- 07 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="independent"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 07
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                07
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐎 午 · 말
+                            </span>
+
+                            <h4>이준혁</h4>
+
+                            <p class="character-role">
+                                특급 배달 라이더
+                            </p>
+
+                            <p class="character-info">
+                                24세 · 남성 · ESFP 7w8
+                            </p>
+
+                            <p class="character-description">
+                                자유분방하고 이동을 좋아한다.
+                                도시의 구석구석을 누비며
+                                다양한 사람과 연결된다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 08 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="independent"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 08
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                08
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐐 未 · 양
+                            </span>
+
+                            <h4>서연우</h4>
+
+                            <p class="character-role">
+                                심리상담사
+                            </p>
+
+                            <p class="character-info">
+                                26세 · 여성 · INFJ 9w1
+                            </p>
+
+                            <p class="character-description">
+                                타인의 감정을 읽고 집단의
+                                분위기를 파악하는 데 능하다.
+                                갈등을 싫어하는 외유내강형.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 02 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="independent"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 02
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                02
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐂 丑 · 소
+                            </span>
+
+                            <h4>강태준</h4>
+
+                            <p class="character-role">
+                                건설 현장감독
+                            </p>
+
+                            <p class="character-info">
+                                29세 · 남성 · ISTJ 1w9
+                            </p>
+
+                            <p class="character-description">
+                                우직하고 책임감이 강하다.
+                                한번 결정하면 흔들리지 않으며
+                                자신의 사람을 끝까지 보호한다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 29 -->
+
+                    <article
+                        class="character-card"
+                        data-faction="independent"
+                    >
+
+                        <div class="character-image">
+                            <span class="character-image-placeholder">
+                                IMAGE 29
+                            </span>
+                        </div>
+
+                        <div class="character-body">
+
+                            <span class="character-number">
+                                29
+                            </span>
+
+                            <span class="character-zodiac">
+                                🐈 고양이 · 예외
+                            </span>
+
+                            <h4>「제로」</h4>
+
+                            <p class="character-role">
+                                암흑사회 수장 · 고양이 지신
+                            </p>
+
+                            <p class="character-info">
+                                성별 · 나이 불명 · INTP 5w4
+                            </p>
+
+                            <p class="character-description">
+                                12지신 체계에 존재하지 않는
+                                유일한 고양이 지신.
+                                서울 암흑사회의 정점에 있으나
+                                어느 조직에도 완전히 속하지 않는다.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
 
         </section>
 
 
         <!-- =====================================================
-             MAP TAB
+             MAP
         ===================================================== -->
 
         <section
@@ -1047,10 +3124,10 @@
                     ARCHIVE 03
                 </span>
 
-                <h2>12지역 지도</h2>
+                <h2>12구역 지도</h2>
 
                 <p>
-                    MAP OF THE TWELVE ZONES
+                    MAP OF SEOUL · TWELVE ZONES
                 </p>
 
             </div>
@@ -1058,20 +3135,114 @@
 
             <div class="map-wrapper">
 
+                <!--
+                    지도 파일을 같은 폴더에 넣으면 자동으로 표시됩니다.
+
+                    파일명:
+                    zodiac-map.png
+                -->
+
                 <img
                     src="zodiac-map.png"
-                    alt="십이지구역 12지역 지도"
+                    alt="십이지구역 서울 12개 특별관리구역 지도"
                     class="map-image"
+                    onerror="this.style.display='none'; document.getElementById('map-placeholder').style.display='flex';"
                 >
 
+                <div
+                    id="map-placeholder"
+                    class="map-placeholder"
+                    style="display:none;"
+                >
+                    ZODIAC MAP · IMAGE NOT FOUND
+                </div>
+
                 <div class="map-caption">
-                    SEOUL · TWELVE ZONES
+                    SEOUL · TWELVE SPECIAL MANAGEMENT ZONES
+                </div>
+
+            </div>
+
+
+            <!-- ZONE LIST -->
+
+            <div class="zone-grid">
+
+                <div class="zone-card">
+                    <span class="zone-number">ZONE 01</span>
+                    <strong>자구역 · 子</strong>
+                    <span>쥐</span>
+                </div>
+
+                <div class="zone-card">
+                    <span class="zone-number">ZONE 02</span>
+                    <strong>축구역 · 丑</strong>
+                    <span>소</span>
+                </div>
+
+                <div class="zone-card">
+                    <span class="zone-number">ZONE 03</span>
+                    <strong>인구역 · 寅</strong>
+                    <span>호랑이</span>
+                </div>
+
+                <div class="zone-card">
+                    <span class="zone-number">ZONE 04</span>
+                    <strong>묘구역 · 卯</strong>
+                    <span>토끼</span>
+                </div>
+
+                <div class="zone-card">
+                    <span class="zone-number">ZONE 05</span>
+                    <strong>진구역 · 辰</strong>
+                    <span>용</span>
+                </div>
+
+                <div class="zone-card">
+                    <span class="zone-number">ZONE 06</span>
+                    <strong>사구역 · 巳</strong>
+                    <span>뱀</span>
+                </div>
+
+                <div class="zone-card">
+                    <span class="zone-number">ZONE 07</span>
+                    <strong>오구역 · 午</strong>
+                    <span>말</span>
+                </div>
+
+                <div class="zone-card">
+                    <span class="zone-number">ZONE 08</span>
+                    <strong>미구역 · 未</strong>
+                    <span>양</span>
+                </div>
+
+                <div class="zone-card">
+                    <span class="zone-number">ZONE 09</span>
+                    <strong>신구역 · 申</strong>
+                    <span>원숭이</span>
+                </div>
+
+                <div class="zone-card">
+                    <span class="zone-number">ZONE 10</span>
+                    <strong>유구역 · 酉</strong>
+                    <span>닭</span>
+                </div>
+
+                <div class="zone-card">
+                    <span class="zone-number">ZONE 11</span>
+                    <strong>술구역 · 戌</strong>
+                    <span>개</span>
+                </div>
+
+                <div class="zone-card">
+                    <span class="zone-number">ZONE 12</span>
+                    <strong>해구역 · 亥</strong>
+                    <span>돼지</span>
                 </div>
 
             </div>
 
         </section>
-
 
     </main>
 
@@ -1091,45 +3262,37 @@
 
     </footer>
 
-
 </div>
 
 
 <!-- =============================================================
-     TAB SCRIPT
+     SCRIPT
 ============================================================= -->
 
 <script>
 
-    const tabs = document.querySelectorAll(".archive-tab");
-    const sections = document.querySelectorAll(".archive-section");
+    /* =========================================================
+       MAIN TABS
+    ========================================================= */
+
+    const tabs =
+        document.querySelectorAll(".archive-tab");
+
+    const sections =
+        document.querySelectorAll(".archive-section");
 
 
     function openTab(tabName, updateURL = true) {
 
-        /*
-         * 모든 탭 비활성화
-         */
         tabs.forEach(tab => {
-
             tab.classList.remove("active");
-
         });
 
-
-        /*
-         * 모든 콘텐츠 숨기기
-         */
         sections.forEach(section => {
-
             section.classList.remove("active");
-
         });
 
 
-        /*
-         * 선택한 탭 활성화
-         */
         const selectedTab =
             document.querySelector(
                 `.archive-tab[data-tab="${tabName}"]`
@@ -1143,12 +3306,9 @@
 
         if (!selectedTab || !selectedSection) {
 
-            tabName = "world";
-
             openTab("world", updateURL);
 
             return;
-
         }
 
 
@@ -1157,13 +3317,6 @@
         selectedSection.classList.add("active");
 
 
-        /*
-         * 주소창에도 현재 탭 표시
-         *
-         * archive.html?tab=world
-         * archive.html?tab=characters
-         * archive.html?tab=map
-         */
         if (updateURL) {
 
             const newURL =
@@ -1174,48 +3327,87 @@
                 "",
                 newURL
             );
-
         }
 
 
-        /*
-         * 탭을 바꿀 때 페이지 상단으로 이동
-         */
         window.scrollTo({
             top: 0,
             behavior: "smooth"
         });
-
     }
 
 
-    /*
-     * 탭 클릭
-     */
-
     tabs.forEach(tab => {
 
-        tab.addEventListener("click", () => {
+        tab.addEventListener(
+            "click",
+            () => {
 
-            const tabName =
-                tab.dataset.tab;
+                const tabName =
+                    tab.dataset.tab;
 
-            openTab(tabName);
+                openTab(tabName);
 
-        });
+            }
+        );
 
     });
 
 
-    /*
-     * 주소의 ?tab= 확인
-     *
-     * index.html에서
-     *
-     * archive.html?tab=world
-     *
-     * 로 들어온 경우 해당 탭을 자동으로 표시한다.
-     */
+    /* =========================================================
+       CHARACTER FILTER
+    ========================================================= */
+
+    const filterButtons =
+        document.querySelectorAll(".filter-button");
+
+    const characterGroups =
+        document.querySelectorAll(".character-group");
+
+
+    filterButtons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const filter =
+                    button.dataset.filter;
+
+
+                filterButtons.forEach(btn => {
+                    btn.classList.remove("active");
+                });
+
+                button.classList.add("active");
+
+
+                characterGroups.forEach(group => {
+
+                    if (
+                        filter === "all" ||
+                        group.dataset.group === filter
+                    ) {
+
+                        group.style.display = "block";
+
+                    } else {
+
+                        group.style.display = "none";
+
+                    }
+
+                });
+
+            }
+        );
+
+    });
+
+
+    /* =========================================================
+       INITIAL TAB
+    ========================================================= */
 
     const params =
         new URLSearchParams(
@@ -1226,7 +3418,10 @@
         params.get("tab") || "world";
 
 
-    openTab(initialTab, false);
+    openTab(
+        initialTab,
+        false
+    );
 
 </script>
 
